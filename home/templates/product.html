@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+
+  <br><br><br><br><br>
+
+    <h4>Add Product Details</h4>
+     
+    <form method="post">
+        {% csrf_token %}
+        <p><input type="text" placeholder="Enter category id" required name="cat" class="form-control"></p>
+        <p><input type="text" placeholder="Enter author" required name="ven" class="form-control"></p>
+        <p><input type="text" placeholder="Enter book_name" required name="name" class="form-control"></p>
+        <p><input type="text" placeholder="Enter quantity" required name="qty" class="form-control"></p>
+        <p><input type="text" placeholder="Enter original price" required name="oprice" class="form-control"></p>
+        <p><input type="text" placeholder="Enter selling price" required name="price" class="form-control"></p>
+        <p><input type="text" placeholder="Enter description" required name="desc" class="form-control"></p>
+        <p><button type="submit" class="btn btn-success">Save</button></p>
+    </form>
+
+  {% endblock content %}

@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap 5 - Transparent Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" /> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+    <style>
+      html{
+         scroll-behavior: smooth;
+          }
+     
+      .nav-item::after {
+       content: '';
+       display: block;
+       width: 0px;
+       height: 2px;
+       background: #fec400;
+       transition: 0.4s
+      }
+      .nav-item:hover::after {
+       width: 100%
+      }
+      .banner-image {
+        background-image: url('https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5920.jpg?w=1060&t=st=1682495328~exp=1682495928~hmac=b9171d50c8ddade4437a91d581725efd4bf834fc97b83182a8ae8c4ea4addb6e');
+        background-size:cover;
+      }
+      
+      #back-image
+        {
+        background-image: url("https://img.freepik.com/premium-photo/blurred-bookshelf-many-old-books-book-shop-library_36051-477.jpg?size=626&ext=jpg&ga=GA1.1.497607414.1677170754&semt=robertav1_2_sidr");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        height: 400px;
+      }
+     
+    </style>
+  </head>
+  <body>
+ 
+    <!-- Navbar  -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+      <div class="container">
+        <!-- <img src="https://t4.ftcdn.net/jpg/01/50/85/13/360_F_150851311_h6gEdD5Vf0QIz3LYAD6Dfj29ZzSlJo8q.jpg" style="border-radius: 50px; height: 100px; padding-left: 0;"> -->
+        <img style="border-radius:50%; height: 100px;" src="https://i.etsystatic.com/13653916/r/il/f88ae1/1435212973/il_fullxfull.1435212973_9y5m.jpg">
+        <!-- <a class="navbar-brand" href="#"><b>Pizza Zone</b></a> -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{% url 'home' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#abt">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'menu' %}">CATEGORIES</a>
+            </li>
+
+            <li class="nav-item"><a href="{% url 'pro' %}" class="nav-link text-white">ADD PRODUCT</a></li>
+            <li class="nav-item"><a href="{% url 'pret' %}" class="nav-link text-white">PRODUCT DETAILS</a></li>
+
+            {% if request.user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link text-light" href="/logout">LOGOUT</a></li>
+             
+
+            {% else %}
+
+            <li class="nav-item dropdown">
+              <div class="dropdown">
+              
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDrpdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg></a>
+                <!-- <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDrpdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a> -->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'sign' %}">Signup</a>
+                  <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+
+                </div>
+              </div>
+            </li>
+            {% endif %}
+
+           
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></a></i>
+            </li> 
+   
+          </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+   
+
+
+    {% block content %}
+  
+    {% endblock content %}
+
+
+
+
+                 <!-- Footer -->
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Form -->
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+              </p>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+              <!-- Email input -->
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example21" class="form-control" placeholder="Email address" />
+                <!-- <label class="form-label" for="form5Example21">Email address</label> -->
+              </div>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-outline-light mb-4">
+                Subscribe
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
+  
+      <!-- Section: Text -->
+      <section class="mb-4">
+        <p>
+          Buy your favorite books on the go, anywhere, anytime. Bookendio is happy to assist you with your home delivery. Every time you order, you get a an extra discount for your purchase. *T&C Apply.</p>
+        <p>Hurry up and place your order now!
+        </p>
+      </section>
+      <!-- Section: Text -->
+  
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">OUR POLICIES</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Privacy</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Terms and Conditions</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Responsible disclosure</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">FAQs & Helps</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+           <!--Grid column-->
+           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">About us</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Contact</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Track your orders</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Maintenance</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Books</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Stay Connected</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">instagram</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">facebook</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">twitter</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">whatsapp</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">Bookendio.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  
+      <script src="{% static '/js/script.js' %}"></script>
+      <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+      <script type="text/javascript">
+        var nav = document.querySelector('nav');
+  
+        window.addEventListener('scroll', function () {
+          if (window.pageYOffset > 100) {
+            nav.classList.add('bg-dark', 'shadow');
+          } else {
+            nav.classList.remove('bg-dark', 'shadow');
+          }
+        });
+      </script>
+  
+        <!--Optional JavaScript-->
+      <!--jQuery first, then Popper.js, then Bootstrap JS-->
+     
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </body>
+  </html>

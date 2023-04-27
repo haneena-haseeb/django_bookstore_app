@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br><br><br><br>
+
+<h4>Edit Product</h4>
+
+<form method="post">
+    {% csrf_token %}
+    <p><input type="text" placeholder="Enter category" name="ven" value="{{data.vendor}}" required class="form-control"></p>
+    <p><input type="text" placeholder="Enter product_name" name="name" value="{{data.name}}" required class="form-control"></p>
+    <p><input type="text" placeholder="Enter price" name="price" value="{{data.selling_price}}" required class="form-control"></p>
+    <p><button type="submit" class="btn btn-success">UPDATE</button></p>
+    </form>
+
+{% endblock content %}

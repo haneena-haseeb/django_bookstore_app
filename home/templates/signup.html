@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}signup{% endblock title%}
+
+
+
+
+{%  block content %}
+    <!-- Banner Image  -->
+    <div class="container-fluid">
+      <div 
+        class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center img-fluid max-width: 100%; height: auto;">
+       
+    
+        <!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+
+      <div class="container mt-5">
+          <div class="col-lg-12 mb-5 mb-lg-0 mx-auto">
+             <div class="card bg-dark">
+              <div class="card-body py-5 px-md-5 bg-dark"> 
+                <h3 class="text-center text-light font-weight-bold">Sign Up</h3>
+                <br>
+                {% include 'contactmsg.html' %}
+                <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> -->
+                <form action="/sup/" method="post">
+                  {% csrf_token %}
+
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example4" class="form-control" placeholder="Username" name="username" />
+                  </div>
+  
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3" class="form-control" placeholder="Email address" name="email" />
+                    
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4" class="form-control" placeholder="Password" name="password1" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4" class="form-control" placeholder="Confirm Password" name="password2" />
+                  </div>
+  
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-center mb-4 text-light">
+                    <input class="agree-term " type="checkbox" name="agree-term" id="agree-term" />&nbsp;
+                      I agree all the Terms & Conditions
+                  </div>
+  
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary btn-block mb-4">
+                    Sign up
+                  </button>
+  
+                  <!-- Register buttons -->
+                  <div class="text-center text-light">
+                    <p>or sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+  
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-google"></i>
+                    </button>
+  
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+  
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-github"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+
+{% endblock content %}
